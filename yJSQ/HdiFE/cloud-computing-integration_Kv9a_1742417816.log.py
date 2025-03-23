@@ -502,7 +502,6 @@ INSTALLED_APPS = list(INSTALLED_APPS)  # Make sure it's mutable
 settings_utils.update_dashboards(
     [
         enabled,
-        local_enabled,
     ],
     HORIZON_CONFIG,
     INSTALLED_APPS,
