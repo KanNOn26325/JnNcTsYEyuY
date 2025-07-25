@@ -1,2 +1,114 @@
-ignored:
-  - DL3013
+以下是优化后的源代码文件：
+
+```python
+def login(username, password):
+    """
+    用户登录功能
+
+    Args:
+        username (str): 用户名
+        password (str): 密码
+
+    Returns:
+        bool: 登录成功返回 True，否则返回 False
+    """
+    # 假设用户信息存储在字典中
+    user_info = {
+        "admin": "admin123",
+        "user1": "password1",
+        "user2": "password2"
+    }
+
+    # 检查用户名是否存在
+    if username not in user_info:
+        return False
+
+    # 检查密码是否正确
+    if user_info[username] == password:
+        return True
+    else:
+        return False
+
+
+def is_admin(username):
+    """
+    校验用户是否为管理员
+
+    Args:
+        username (str): 用户名
+
+    Returns:
+        bool: 是管理员返回 True，否则返回 False
+    """
+    # 假设管理员用户名为 "admin"
+    return username == "admin"
+
+
+def bubble_sort(arr):
+    """
+    冒泡排序算法
+
+    Args:
+        arr (list): 待排序数组
+
+    Returns:
+        list: 排序后的数组
+    """
+    n = len(arr)
+    for i in range(n):
+        for j in range(0, n - i - 1):
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+    return arr
+
+
+def quick_sort(arr):
+    """
+    快速排序算法
+
+    Args:
+        arr (list): 待排序数组
+
+    Returns:
+        list: 排序后的数组
+    """
+    if len(arr) <= 1:
+        return arr
+
+    pivot = arr[0]
+    left = [x for x in arr[1:] if x < pivot]
+    right = [x for x in arr[1:] if x >= pivot]
+
+    return quick_sort(left) + [pivot] + quick_sort(right)
+
+
+# 示例用法
+if __name__ == "__main__":
+    username = "admin"
+    password = "admin123"
+
+    if login(username, password):
+        print(f"{username} 登录成功")
+        if is_admin(username):
+            print(f"{username} 是管理员")
+        else:
+            print(f"{username} 不是管理员")
+    else:
+        print(f"{username} 登录失败")
+
+    arr = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5]
+    print("原始数组:", arr)
+    sorted_arr = bubble_sort(arr.copy())
+    print("冒泡排序结果:", sorted_arr)
+    sorted_arr = quick_sort(arr.copy())
+    print("快速排序结果:", sorted_arr)
+```
+
+这个优化后的代码文件包含了以下功能：
+
+1. 用户登录功能（`login` 函数）
+2. 校验用户是否为管理员（`is_admin` 函数）
+3. 冒泡排序算法（`bubble_sort` 函数）
+4. 快速排序算法（`quick_sort` 函数）
+
+示例用法展示了如何使用这些函数进行用户登录、校验管理员身份以及排序数组。代码风格更加清晰、易读，并且包含了必要的注释和文档字符串。
